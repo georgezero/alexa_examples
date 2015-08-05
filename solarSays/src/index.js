@@ -29,12 +29,12 @@ var APP_ID = "";//replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]'
 /**
  * Array containing knock knock jokes.
  */
-var JOKE_LIST = [
-    {setup: "Hello", punchline: "I like you"},
-    {setup: "Hello", punchline: "I like drawing"},
-    {setup: "Hello", punchline: "I like mama"},
-    // {setup: "", punchline: ""},
-    // {setup: "", punchline: ""},
+var QUOTE_LIST = [
+    {setup: "Hello", quote: "I like you"},
+    {setup: "Hello", quote: "I like drawing"},
+    {setup: "Hello", quote: "I like mama"},
+    // {setup: "", quote: ""},
+    // {setup: "", quote: ""},
 ];
 
 /**
@@ -72,8 +72,10 @@ SolarSaysSkill.prototype.eventHandlers.onSessionStarted = function (sessionStart
 SolarSaysSkill.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("SolarSaysSkill onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
 
-    var speechOutput = "Welcome to the Solar Says, you can say hello";
-    response.ask(speechOutput);
+    // var speechOutput = "Solar Says";
+    // response.ask(speechOutput);
+    handleSolarSaysIntent(session, response);
+    
 };
 
 /**
@@ -90,23 +92,33 @@ SolarSaysSkill.prototype.intentHandlers = {
     
     // register custom intent handlers
     SolarSaysIntent: function (intent, session, response) {
-      
-        //Select a random joke and store it in the session variables.
-        var jokeID = Math.floor(Math.random() * JOKE_LIST.length);
-
-        //The stage variable tracks the phase of the dialogue.
-        //session.attributes.setup = JOKE_LIST[jokeID].setup;
-        //session.attributes.punchline = JOKE_LIST[jokeID].punchline;
-
-        speechOutput = JOKE_LIST[jokeID].punchline;
+        handleSolarSaysIntent(session, response);
         
-        // tellWithCard(speechOutput, cardTitle, cardContent)
-        response.tellWithCard(speechOutput, "Solar Says", speechOutput);
     },
     HelpIntent: function (intent, session, response) {
         response.ask("You can say hello to me!");
     }
 
+}
+
+/**
+ * Selects a quote randomly
+ */
+function handleSolarSaysIntent(session, response) {
+    var speechOutput = "";
+    //Select a random solar quote and store it in the session variables.
+    var quoteID = Math.floor(Math.random() * QUOTE_LIST.length);
+
+    speechOutput = "Solar Says " + QUOTE_LIST[quoteID].quote;
+
+    // tellWithCard(speechOutput, cardTitle, cardContent)
+    response.tellWithCard(speechOutput, "Solar Says", speechOutput);
+    
+    // NOT NEEDED
+    //var speechOutput = "";
+    //Reprompt speech will be triggered if the user doesn't respond.
+    //var repromptSpeech = "You can ask who's there";
+    //response.askWithCard(speechOutput, repromptSpeech, "Solar Says", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
