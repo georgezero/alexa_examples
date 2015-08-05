@@ -1,21 +1,8 @@
 {
   "intents": [
     {
-      "intent": "TellMeAJokeIntent",
+      "intent": "SolarSaysIntent",
       "slots": []
-    },
-    {
-      "intent": "WhosThereIntent",
-      "slots": []
-    },
-    {
-     "intent": "SetupNameWhoIntent",
-     "slots":[
-        {
-          "name": "SetupName",
-          "type": "LITERAL"
-        }
-      ]
     },
     {
       "intent": "HelpIntent",
