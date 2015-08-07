@@ -1,3 +1,9 @@
+SolarSaysIntent say something
+SolarSaysIntent say something he likes
+SolarSaysIntent what he likes
+SolarSaysIntent tell me what he likes
+SolarSaysIntent tell me something
+SolarSaysIntent tell me what he is thinking
 SolarSaysIntent say hello
 SolarSaysIntent say hello solar
 SolarSaysIntent hello

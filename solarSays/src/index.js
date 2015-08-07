@@ -33,6 +33,7 @@ var QUOTE_LIST = [
     {setup: "Hello", quote: "I like you"},
     {setup: "Hello", quote: "I like drawing"},
     {setup: "Hello", quote: "I like mama"},
+    {setup: "Hello", quote: "Sophie like mama"},
     // {setup: "", quote: ""},
     // {setup: "", quote: ""},
 ];
